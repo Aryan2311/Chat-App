@@ -3,11 +3,11 @@ import useGetMessages from "../../hooks/useGetMessages.js";
 import MessageSkeleton from "../../skeletons/MessageSkeleton.jsx";
 import Message from "./Message";
 import { toast } from "react-hot-toast";
-// import useListenMessages from "../../hooks/useListenMessages";
+import useListenMessages from "../../hooks/useListenMessages";
 
 const Messages = () => {
 	const { messages, loading } = useGetMessages();
-	// useListenMessages();
+	useListenMessages();
 	const lastMessageRef = useRef();
 
 	useEffect(() => {

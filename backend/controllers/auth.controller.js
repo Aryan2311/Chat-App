@@ -63,9 +63,11 @@ export const login = async (req, res) => {
 
         // Send success response with user details
         res.status(200).json({
-            username: user.username,
-            fullName: user.fullName
-        });
+			_id: user._id,
+			fullName: user.fullName,
+			username: user.username,
+			profilePic: user.profilePic,
+		});
     } catch (error) {
         console.error("Error while Logging In:", error.message);
         return res.status(500).json({ error: "Internal Server Error" });

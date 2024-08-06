@@ -6,17 +6,20 @@ import userRouter from "./routes/users.routes.js";
 import connect_db from "./db/mongodb.js";
 import cookieParser from "cookie-parser";
 import cors from "cors"
-dotenv.config();
-const app = express();
+import { app, server } from "./socket/socket.js";
 
-const port = process.env.PORT || 4000
+
+
+dotenv.config();
+
+const port = process.env.PORT || 5000
 app.use(cors())
 app.use(express.json());
 app.use(cookieParser());
 app.use('/api/auth', authRouter )
 app.use('/api/message', messageRouter )
 app.use('/api/users', userRouter )
-app.get('/', (req,res)=>{res.send("Hello World")});
-app.listen(port, ()=> {
+
+server.listen(port, ()=> {
     connect_db();
     console.log(`App Listening on Port ${process.env.PORT}`)});
